@@ -1,0 +1,11 @@
+Задание 4
+
+https://www.w3schools.com/sql/trysql.asp?filename=trysql_asc
+
+Необходимо вывести id клиента и имя клиента, сделавших больше 5-ти заказов, а также количество заказов и дату последнего заказа. Список должен идти по убыванию от клиентов с большим количеством заказов к клиентам с меньшим количеством заказов
+
+SELECT Customers.CustomerID, Customers.CustomerName, COUNT(Orders.EmployeeID) AS Orders, MAX(Orders.OrderDate) AS OrdersLastDate
+FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+GROUP BY Customers.CustomerID, Customers.CustomerName
+HAVING COUNT(Orders.EmployeeID) > 5
+ORDER BY MAX(Orders.OrderDate) DESC;
